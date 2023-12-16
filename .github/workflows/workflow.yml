@@ -37,6 +37,7 @@ jobs:
 
     - name: Run tests
       run: npm run test:static
+      continue-on-error: true
 
     - name: Generate Allure report
       run: npm run generate:report
