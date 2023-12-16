@@ -1,0 +1,46 @@
+name: Automated Testing and Allure Report
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js and Yarn
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install Java
+      run: |
+        sudo apt-get update
+        sudo apt-get install openjdk-8-jre
+        echo "JAVA_HOME=$(which java)" >> $GITHUB_ENV
+
+    - name: Install app
+      run: |
+        cd app
+        yarn install
+
+    - name: Start website for testing
+      run: |
+        cd app
+        yarn dev &
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npx run test:firefox
+
+    - name: Generate Allure report
+      run: npx run generate:report
+
+    - name: Deploy Allure to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./reports/allure-report
