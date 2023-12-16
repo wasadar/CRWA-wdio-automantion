@@ -167,12 +167,12 @@ To run the automated tests using WebdriverIO, you can use the following npm scri
 
 - Run the automated tests using WebdriverIO:
     ```
-    npx run test:browser-name
+    npm run test:browser-name
     ```
 
 - Run the automated tests using WebdriverIO in headless-mode:
     ```
-    npx run test:browser-name:headless
+    npm run test:browser-name:headless
     ```
 
 Choose the appropriate script based on your testing needs. And don't forget that you need run app by executing command first:
@@ -185,12 +185,12 @@ To generate and view reports, you can use the following npm scripts:
 
 - Generate the Allure report:
     ```
-    npx run generate:report
+    npm run generate:report
     ```
 
 - Open the Allure report in your default web browser:
     ```
-    npx run open:report
+    npm run open:report
     ```
 
 The test results will be saved in the "reports\allure-report" directory for Allure reporting. Make sure to configure your tests and reporting as needed in the project's configuration files and the Allure configuration.
