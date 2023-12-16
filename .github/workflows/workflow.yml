@@ -27,10 +27,10 @@ jobs:
         yarn dev &
 
     - name: Install Java
-      run: |
-        sudo apt-get update
-        sudo apt-get install openjdk-8-jre
-        echo "JAVA_HOME=$(which java)" >> $GITHUB_ENV
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'  
+        distribution: 'adopt'
 
     - name: Install dependencies
       run: npm install
