@@ -16,21 +16,21 @@ jobs:
       with:
         node-version: '18'
 
+    - name: Install app
+      run: |
+        cd app
+        yarn install
+  
+    - name: Start website for testing
+      run: |
+        cd app
+        yarn dev &
+
     - name: Install Java
       run: |
         sudo apt-get update
         sudo apt-get install openjdk-8-jre
         echo "JAVA_HOME=$(which java)" >> $GITHUB_ENV
-
-    - name: Install app
-      run: |
-        cd app
-        yarn install
-
-    - name: Start website for testing
-      run: |
-        cd app
-        yarn dev &
 
     - name: Install dependencies
       run: npm install
