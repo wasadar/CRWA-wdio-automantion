@@ -12,6 +12,7 @@
     "dotenv": "^16.3.1"
   },
   "scripts": {
+    "test:static": "wdio static-wdio.conf.mjs",
     "test:chrome": "cross-env CAPABILITIES=\"{\"\"browserName\"\": \"\"chrome\"\"}\" wdio wdio.conf.mjs",
     "test:chrome:headless": "cross-env CAPABILITIES=\"{\"\"browserName\"\": \"\"chrome\"\", \"\"goog:chromeOptions\"\": { \"\"args\"\": [\"\"headless\"\", \"\"disable-gpu\"\"]}}\" wdio wdio.conf.mjs",
     "test:firefox": "cross-env CAPABILITIES=\"{\"\"browserName\"\": \"\"firefox\"\"}\" wdio wdio.conf.mjs",
