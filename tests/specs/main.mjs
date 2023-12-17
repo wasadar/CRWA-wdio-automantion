@@ -103,7 +103,7 @@ describe('Test main page', () => {
         expect(await mainPage.submitUserDataButton.isEnabled()).toEqual(false);
     });
 
-    it('Phone number is required in user profile', async () => {
+    it('Phone number is validated in user profile', async () => {
         await mainPage.accountSettingLink.click();
         await browser.pause(1000);
 
