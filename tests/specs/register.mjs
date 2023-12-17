@@ -2,7 +2,7 @@ import { expect } from '@wdio/globals'
 import loginPage from '../pages/login.page.mjs';
 import mainPage from '../pages/main.page.mjs';
 import registerPage from '../pages/register.page.mjs';
-import generateRandomString from '../helpers.mjs';
+import { generateRandomString } from '../helpers.mjs';
 
 describe('Test register page', () => {
     beforeEach(() => {
@@ -70,6 +70,9 @@ describe('Test register page', () => {
         await registerPage.register(generateRandomString(4, false), generateRandomString(4, false), login,password);
         await browser.pause(1000);
         await loginPage.login(login, password);
+        await browser.pause(1000);
+        await mainPage.processDialogueWindow();
+        await browser.pause(1000);
 
         expect(await mainPage.isMainPage()).toEqual(true);
     });

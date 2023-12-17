@@ -3,7 +3,7 @@ import loginPage from '../pages/login.page.mjs';
 import mainPage from '../pages/main.page.mjs';
 import registerPage from '../pages/register.page.mjs';
 import data from '../../valid-data.json' assert { type: 'json' };
-import generateRandomString from '../helpers.mjs';
+import { generateRandomString } from '../helpers.mjs';
 
 describe('Test login page', () => {
     beforeEach(() => {

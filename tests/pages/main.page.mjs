@@ -1,4 +1,5 @@
 import { LoginPage } from "./login.page.mjs";
+import { generateRandomString, generateRandomNumberString } from "../helpers.mjs";
 
 export class MainPage extends LoginPage {
     get logoutButton () {
@@ -39,6 +40,41 @@ export class MainPage extends LoginPage {
 
     get submitUserDataButton () {
         return $('[data-test="user-settings-submit"]');
+    }
+
+    get dialogWindow () {
+        return $('.MuiDialogTitle-root');
+    }
+
+    get bankNameInputField () {
+        return $('#bankaccount-bankName-input')
+    }
+
+    get routingNumberInputField () {
+        return $('#bankaccount-routingNumber-input')
+    }
+
+    get accountNumberInputField () {
+        return $('#bankaccount-accountNumber-input')
+    }
+
+    get saveButton () {
+        return $('[data-test="bankaccount-submit"]');
+    }
+
+    get skipButton () {
+        return $('[data-test="user-onboarding-next"]');
+    }
+
+    async processDialogueWindow () {
+        if (await this.dialogWindow.isExisting()) {
+            await this.skipButton.click();
+            await this.bankNameInputField.setValue(generateRandomString(6, false));
+            await this.routingNumberInputField.setValue(generateRandomNumberString(9));
+            await this.accountNumberInputField.setValue(generateRandomNumberString(9));
+            await this.saveButton.click();
+            await this.skipButton.click();
+        }
     }
 
     async isMainPage () {

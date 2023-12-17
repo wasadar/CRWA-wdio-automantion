@@ -3,11 +3,14 @@ import { Key } from 'webdriverio'
 import loginPage from '../pages/login.page.mjs';
 import mainPage from '../pages/main.page.mjs';
 import data from '../../valid-data.json' assert { type: 'json' };
-import generateRandomString from '../helpers.mjs';
+import { generateRandomString, generateRandomNumberString } from '../helpers.mjs';
 
 describe('Test main page', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
         mainPage.open(data.user.username, data.user.password);
+        await browser.pause(1000);
+        await mainPage.processDialogueWindow();
+        await browser.pause(1000);
     });
 
     it('Logout', async () => {

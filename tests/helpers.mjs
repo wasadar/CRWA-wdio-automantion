@@ -1,4 +1,4 @@
-export default function generateRandomString(length, includeNumbers = true) {
+export function generateRandomString(length, includeNumbers = true) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz' + (includeNumbers ? '0123456789' : '');
 
@@ -8,3 +8,11 @@ export default function generateRandomString(length, includeNumbers = true) {
 
     return result;
 }
+
+export function generateRandomNumberString(length) {
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += Math.floor(Math.random() * 10);
+    }
+    return result;
+  }
