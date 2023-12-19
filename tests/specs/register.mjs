@@ -10,7 +10,10 @@ describe('Test register page', () => {
     });
 
     it('Login link', async () => {
-        await registerPage.loginLink.click();
+        await browser.execute(() => {
+            document.activeElement.blur();
+        });
+
         await registerPage.loginLink.click();
         await browser.pause(1000);
 
